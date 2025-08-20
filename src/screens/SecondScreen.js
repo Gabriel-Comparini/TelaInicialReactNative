@@ -10,7 +10,7 @@ export default function SecondScreen({ navigation }) {
         <View style={styles.containerInterno1}>
           <View style = {[styles.barrinhaIgual, {alignItems:'flex-start', paddingLeft:'5%',marginBottom:'8%'}]}>
             <Text style = {{fontFamily: "Inter-Bold", fontSize: 40, color: '#2a3e54ff'}}>Acesse</Text>
-            <Text style = {{fontFamily: "Inter-Bold", fontSize: 15, color: '#2a3e54ff', paddingLeft: 2}}>Inicie fazendo login!</Text>
+            <Text style = {{fontFamily: "Inter-Bold", fontSize: 15, color: '#2a3e54ff', paddingLeft: 2}}>Inicie fazendo o login!</Text>
           </View>
 
           <View style = {[styles.barrinhaIgual, {gap:'1%'}]}>
@@ -49,7 +49,7 @@ export default function SecondScreen({ navigation }) {
 
         <View style ={styles.containerInterno2}>
           <View style = {{display:'flex', justifyContent:'center', alignItems:'center', gap: '10%'}}>
-            <Text style = {{display:'flex', flexDirection:'column', gap:'10%', width:'100%', height:'20%'}}>Já possui uma conta?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Third')} style = {{width:'100%', height:'20%'}}><Text style = {{display:'flex', flexDirection:'column', gap:'10%', width:'100%', height:'100%'}}>Ainda não possui uma conta?</Text></TouchableOpacity>
             <View style = {{display:'flex', flexDirection:'row', gap:'10%', width:'100%'}}>
               <Image source={require('../../assets/Google.png')}/>
               <Image source={require('../../assets/Facebook.png')}/>
