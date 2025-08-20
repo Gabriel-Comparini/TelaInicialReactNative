@@ -1,7 +1,12 @@
 import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import {useState} from 'react';
+import Checkbox from 'expo-checkbox';
 import { styles } from '../styles';
 
 export default function SecondScreen({ navigation }) {
+  const [isChecked, setChecked] = useState(false);
+  const [isOpened, setOpen] = useState(true);
+
   return (
     <View style = {styles.container}>
       <View style = {styles.miniCabecalho}></View>
@@ -21,15 +26,18 @@ export default function SecondScreen({ navigation }) {
           <View style = {[styles.barrinhaIgual, {gap:'1%'}]}>
             <Text style = {{width: '90%', paddingLeft: 8}}>Senha</Text>
             <View style={styles.modeloInput}>
-              <TextInput style = {{height:'100%', width:'86%'}} placeholder="Insira sua senha..." />
-              <TouchableOpacity><Text>Olho</Text></TouchableOpacity>
+              <TextInput secureTextEntry = {isOpened} style = {{height:'100%', width:'86%'}} placeholder="Insira sua senha..." />
+              <TouchableOpacity onPress={() => setOpen(!isOpened)}><Image style={{height: 33, width: 33}} source={require('../../assets/eye.png')}/></TouchableOpacity>
             </View>
           </View>
             
           <View style = {[styles.barrinhaIgual, {flexDirection: 'row', gap:'20%'}]}>
-            <TouchableOpacity>
-              <Text>Lembrar senha</Text>
-            </TouchableOpacity>
+            <View>
+              <View style = {{flexDirection:'row'}}>
+                <Checkbox value={isChecked} onValueChange={setChecked} style={{ marginRight: 4 }} color={isChecked ? '#6fc06fff' : undefined} />
+                <Text>Lembrar senha</Text>
+              </View>
+            </View>
 
             <TouchableOpacity>
               <Text>Esqueci minha senha</Text>
@@ -38,11 +46,11 @@ export default function SecondScreen({ navigation }) {
 
           <View style = {[styles.barrinhaIgual, {display: 'flex', flexDirection: 'row', gap: '5%'}]}> 
             <TouchableOpacity style = {[styles.estBotao, {height: '100%', width: '43%', backgroundColor: '#6fc06fff'}]}>
-              <Text>Acessar</Text>
+              <Text style = {{color: '#fff'}}>Acessar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.goBack()} style = {[styles.estBotao, {height: '100%', width: '43%', backgroundColor:'#fff'}]}>
-              <Text>Voltar</Text>
+              <Text style = {{color: '#2a3e54ff'}}>Voltar</Text>
             </TouchableOpacity>
           </View>
         </View>

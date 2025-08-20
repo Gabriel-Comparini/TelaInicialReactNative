@@ -1,7 +1,9 @@
 import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import {useState} from 'react';
 import { styles } from '../styles';
 
 export default function ThirdScreen({ navigation }) {
+  const [isOpened, setOpen] = useState(true);
   return (
     <View style = {styles.container}>
           <View style = {styles.miniCabecalho}></View>
@@ -21,22 +23,22 @@ export default function ThirdScreen({ navigation }) {
               <View style = {[styles.barrinhaIgual, {gap:'1%'}]}>
                 <Text style = {{width: '90%', paddingLeft: 8}}>Senha</Text>
                 <View style={styles.modeloInput}>
-                  <TextInput style = {{height:'100%', width:'86%'}} placeholder="Insira sua senha..." />
-                  <TouchableOpacity><Text>Olho</Text></TouchableOpacity>
+                  <TextInput secureTextEntry = {isOpened} style = {{height:'100%', width:'86%'}} placeholder="Insira sua senha..." />
+                  <TouchableOpacity onPress={() => setOpen(!isOpened)}><Image style={{height: 33, width: 33}} source={require('../../assets/eye.png')}/></TouchableOpacity>
                 </View>
               </View>
 
               <View style = {[styles.barrinhaIgual, {gap:'1%'}]}>
                 <Text style = {{width: '90%', paddingLeft: 8}}>Confirmar senha</Text>
                 <View style={styles.modeloInput}>
-                  <TextInput style = {{height:'100%', width:'86%'}} placeholder="Confirme sua senha..." />
-                  <TouchableOpacity><Text>Olho</Text></TouchableOpacity>
+                  <TextInput secureTextEntry = {isOpened} style = {{height:'100%', width:'86%'}} placeholder="Insira sua senha..." />
+                  <TouchableOpacity onPress={() => setOpen(!isOpened)}><Image style={{height: 33, width: 33}} source={require('../../assets/eye.png')}/></TouchableOpacity>
                 </View>
               </View>
     
               <View style = {[styles.barrinhaIgual, {display: 'flex', flexDirection: 'row', gap: '5%', marginTop:'30%'}]}> 
                 <TouchableOpacity style = {[styles.estBotao, {height: '100%', width: '90%', backgroundColor: '#6fc06fff'}]}>
-                  <Text>Acessar</Text>
+                  <Text style = {{color:'#fff'}}>Acessar</Text>
                 </TouchableOpacity>
               </View>
             </View>
